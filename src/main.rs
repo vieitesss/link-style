@@ -58,7 +58,6 @@ fn process_text(text: &str) -> String {
     let mut escape = false;
     let mut bold = false;
     let mut italic = false;
-    //let mut style_stack = Vec::new(); // Pila para manejar estilos anidados
     let mut chars = text.chars().peekable();
 
     while let Some(c) = chars.next() {
@@ -100,7 +99,7 @@ fn process_text(text: &str) -> String {
                         result.push_str(&to_italic(&buffer));
                     }
                 } else {
-                    // Abre el rango de negrita
+                    // Abre el rango de cursiva
                     italic = true;
                     // Pasamos a italics si está activo para limpiar el buffer
                     if bold {
@@ -112,12 +111,11 @@ fn process_text(text: &str) -> String {
             }
             buffer.clear();
         } else {
-            // Agregar caracteres al buffer
             buffer.push(c);
         }
     }
 
-    // Procesa el texto restante según el último estilo en la pila
+    // Procesa el texto restante
     if !buffer.is_empty() {
         if bold && italic {
             result.push_str(&to_bold_italic(&buffer));
