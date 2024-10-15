@@ -14,7 +14,7 @@ Link-Style is a text formatter designed for creating posts in a simplified manne
    ```
 2. Navigate into the project directory:
    ```bash
-   cd link-style
+   cd ~/link-style
    ```
 3. Compile and install using `make`:
    ```bash
