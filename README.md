@@ -1,6 +1,6 @@
 # Link-Style
 
-Link-Style is a text formatter designed for creating LinkedIn posts in a simplified manner. This tool saves you the hassle of using external formatting applications that require constant copying and pasting. With Link-Style, you can write your post in a reduced Markdown-like format, pass the file to the program, and receive the formatted text ready to use.
+Link-Style is a text formatter designed for creating posts in a simplified manner. This tool saves you the hassle of using external formatting applications that require constant copying and pasting. With Link-Style, you can write your post in a reduced Markdown-like format, pass the file to the program, and receive the formatted text ready to use.
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ To format text, call `link-style` with a text file as an argument.
 - Text surrounded by double asterisks (`**`) will be formatted as **bold**.
 - You can also nest formatting: for example, `**bold *italic***` will format text as both **bold and italic**.
 
-The program outputs the formatted text, which can then be directly copied to the system clipboard for easy use in LinkedIn posts.
+The program outputs the formatted text, which can then be directly copied to the system clipboard for easy use in your posts.
 
 ### Copy to Clipboard
 
@@ -49,4 +49,4 @@ For ease of use, here are the commands to copy the formatted text to the clipboa
   link-style yourfile.txt | pbcopy
   ```
 
-Now you can paste the text directly into your LinkedIn post editor!
+Now you can paste the text directly into almost any social media!
