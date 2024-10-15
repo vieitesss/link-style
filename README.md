@@ -24,6 +24,7 @@ Link-Style is a text formatter designed for creating posts in a simplified manne
    ```bash
    just
    ```
+   Check [this](https://www.linkedin.com/feed/update/urn:li:activity:7249720304841670659/) if you want to learn more about `just`.
 
 ## Usage
 
