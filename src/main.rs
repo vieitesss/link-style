@@ -4,42 +4,44 @@ use std::io::{self, BufRead};
 use std::path::Path;
 use unicode_normalization::UnicodeNormalization;
 
+// MEJORA: Refactorizada para usar .map() para mayor eficiencia y legibilidad.
 fn to_bold(text: &str) -> String {
     text.nfd()
-        .flat_map(|c| {
-            let bold_char = match c {
+        .map(|c| {
+            match c {
                 'a'..='z' => char::from_u32((c as u32 - 'a' as u32) + 0x1D41A).unwrap_or(c),
                 'A'..='Z' => char::from_u32((c as u32 - 'A' as u32) + 0x1D400).unwrap_or(c),
                 '0'..='9' => char::from_u32((c as u32 - '0' as u32) + 0x1D7CE).unwrap_or(c),
                 _ => c,
-            };
-            bold_char.to_string().chars().collect::<Vec<_>>()
+            }
         })
         .collect()
 }
 
+// MEJORA: Refactorizada y corregido el problema de la 'h'.
 fn to_italic(text: &str) -> String {
     text.nfd()
-        .flat_map(|c| {
-            let italic_char = match c {
+        .map(|c| {
+            match c {
+                // MEJORA: Caso especial para la 'h' itálica, que tiene un codepoint discontinuo.
+                'h' => '\u{210E}',
                 'a'..='z' => char::from_u32((c as u32 - 'a' as u32) + 0x1D44E).unwrap_or(c),
                 'A'..='Z' => char::from_u32((c as u32 - 'A' as u32) + 0x1D434).unwrap_or(c),
                 _ => c,
-            };
-            italic_char.to_string().chars().collect::<Vec<_>>()
+            }
         })
         .collect()
 }
 
+// MEJORA: Refactorizada para usar .map() para mayor eficiencia y legibilidad.
 fn to_bold_italic(text: &str) -> String {
     text.nfd()
-        .flat_map(|c| {
-            let bold_italic_char = match c {
+        .map(|c| {
+            match c {
                 'a'..='z' => char::from_u32((c as u32 - 'a' as u32) + 0x1D482).unwrap_or(c),
                 'A'..='Z' => char::from_u32((c as u32 - 'A' as u32) + 0x1D468).unwrap_or(c),
                 _ => c,
-            };
-            bold_italic_char.to_string().chars().collect::<Vec<_>>()
+            }
         })
         .collect()
 }
